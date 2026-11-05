@@ -14,7 +14,7 @@ cask "ket" do
   end
 
   depends_on arch: :arm64
-  depends_on macos: :big_sur
+  depends_on :macos
 
   app "ket.app"
   binary "#{appdir}/ket.app/Contents/Resources/bin/ket"
