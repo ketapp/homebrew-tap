@@ -1,6 +1,6 @@
 cask "ket" do
-  version "0.1.0"
-  sha256 "0000000000000000000000000000000000000000000000000000000000000000"
+  version "0.2.0"
+  sha256 "0cc418966ca9fe1faa7e13651942b784bed56002f9b81cf3e6843c12e2a23572"
 
   url "https://github.com/ketapp/ket/releases/download/v#{version}/ket-#{version}.dmg",
       verified: "github.com/ketapp/ket/"
