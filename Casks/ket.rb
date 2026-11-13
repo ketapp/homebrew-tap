@@ -19,6 +19,23 @@ cask "ket" do
   app "ket.app"
   binary "#{appdir}/ket.app/Contents/Resources/bin/ket"
 
+  uninstall quit:   "dev.ketapp.ket",
+            script: {
+              executable:   "/bin/sh",
+              args:         [
+                "-c",
+                <<~'SH',
+                  [ -x "$0" ] || exit 0
+                  case "$(ps -o args= -p "$PPID" | sed -n 's|.*/brew\.rb \([^ ]*\).*|\1|p')" in
+                    install|upgrade|reinstall) exit 0 ;;
+                  esac
+                  exec "$0" uninstall-hooks
+                SH
+                "#{appdir}/ket.app/Contents/Resources/bin/ket",
+              ],
+              must_succeed: false,
+            }
+
   zap trash: [
     "~/.cache/ket",
     "~/.config/ket",
